@@ -17,6 +17,7 @@ def create_item(customer: Customer):
     curr = conn.cursor()
     curr.execute("INSERT INTO customers (name, phone) VALUES (?, ?);", (customer.name, customer.phone))
     customer.cust_id = curr.lastrowid
+    
     conn.commit()
     conn.close()
     return customer
