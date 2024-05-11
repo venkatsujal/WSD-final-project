@@ -74,6 +74,7 @@ for name, price in items.items():
 for order in order_list:
     curr.execute("SELECT id FROM customers WHERE phone=?;", (order["phone"],))
     cust_id = curr.fetchone()[0]
+  
     curr.execute("INSERT INTO orders (notes, timestamp, cust_id) VALUES (?, ?, ?);",
                  (order["notes"], order["timestamp"], cust_id))
     order_id = curr.lastrowid
